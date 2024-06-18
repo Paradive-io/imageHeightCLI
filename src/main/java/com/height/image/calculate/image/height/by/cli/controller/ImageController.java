@@ -23,7 +23,7 @@ public class ImageController {
     public int calculateImageHeight(@RequestBody RequestImageDto requestImageDto) {
         System.out.println("Calculating image height for image: " + requestImageDto.getImagePath());
         String captureCommand = """
-                    capture-website --width 320 %s --output=%s.jpg --full-page
+                    capture-website --width 320 %s --output=%s.jpg --full-page --scale-factor 1
                 """.formatted(requestImageDto.getImagePath(), requestImageDto.getSaveImagePath());
         System.out.println(captureCommand);
 
@@ -73,7 +73,7 @@ public class ImageController {
             int height = image.getHeight();
             System.out.println("width = " + width + ", height = " + height);
 
-            return height/2;
+            return height;
 
         } catch (IOException e) {
             e.printStackTrace();
